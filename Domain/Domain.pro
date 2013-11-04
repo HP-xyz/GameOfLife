@@ -9,6 +9,8 @@ QT       -= gui
 TARGET = Domain
 TEMPLATE = lib
 
+QMAKE_CXXFLAGS += -std=c++11
+
 DEFINES += DOMAIN_LIBRARY
 
 SOURCES += world.cpp \
@@ -16,7 +18,7 @@ SOURCES += world.cpp \
 
 HEADERS += world.h\
         domain_global.h \
-    cell.h
+        cell.h
 
 unix:!symbian {
     maemo5 {

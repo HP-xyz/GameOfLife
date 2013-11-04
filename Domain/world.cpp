@@ -11,31 +11,76 @@ int World::CellCount()
 
 void World::AddCell(int x, int y)
 {
-    Cell* newCell = new Cell(x, y);
-    _cells.append(newCell);
+    _cells.append(Cell(x, y));
 }
 
 int World::NeighbourCount(int x, int y)
 {
-    int neededCellIndex = _cells.indexOf(new Cell(x, y));
+    int neededCellIndex = _cells.indexOf(Cell(x, y));
     return World::_neighbourCount(_cells[neededCellIndex]);
 }
 
-int World::_neighbourCount(Cell *cell)
+void World::Evolve()
+{
+    foreach(Cell cell, _cells)
+        HandleCell(cell);
+    HandleCellCreation();
+    _cells = _evolvedCells;
+    _evolvedCells.clear();
+}
+
+int World::_neighbourCount(Cell& cell)
 {
     int neigbourCount = 0;
-    for(int i = cell->X - 1; i <= cell->Y +1; i++)
-    {
-        for(int j = cell->Y - 1; j <= cell->Y +1; j++)
-        {
-            Cell* comparisonCell = new Cell(i, j);
-            if(_cells.contains(comparisonCell))
-            {
-                delete comparisonCell;
+    for(int i = cell.X - 1; i <= cell.X +1; i++)
+        for(int j = cell.Y - 1; j <= cell.Y +1; j++)
+            if(_cells.contains(Cell(i, j)) && !IsThisCell(i, j, cell))
                 neigbourCount += 1;
+    return neigbourCount;
+}
+
+bool World::IsThisCell(int i, int j, Cell &cell)
+{
+    if(cell.X == i && cell.Y == j)
+        return true;
+    return false;
+}
+
+void World::HandleCell(Cell &cell)
+{
+    auto neighbourCount = _neighbourCount(cell);
+    KillCellIfNeigbourCountIsBad(cell, neighbourCount);
+}
+
+void World::KillCellIfNeigbourCountIsBad(Cell &cell, int neighbourCount)
+{
+    if(neighbourCount == CELL_LIVE_STATE::ALIVE_2
+       || neighbourCount == CELL_LIVE_STATE::ALIVE_3)
+        _evolvedCells.append(cell);
+}
+
+void World::CreateCellIfPossible(int i, int j)
+{
+    auto cell = Cell(i, j);
+    if(!_cells.contains(cell))
+    {
+        auto neighbourCount = _neighbourCount(cell);
+        if(neighbourCount == CELL_LIVE_STATE::ALIVE_3
+           && !_evolvedCells.contains(cell))
+            _evolvedCells.append(cell);
+    }
+}
+
+void World::HandleCellCreation()
+{
+    foreach(Cell cell, _cells)
+    {
+        for(int i = cell.X - 1; i <= cell.X +1; i++)
+        {
+            for(int j = cell.Y - 1; j <= cell.Y +1; j++)
+            {
+                CreateCellIfPossible(i, j);
             }
-            delete comparisonCell;
         }
     }
-    return neigbourCount;
 }
