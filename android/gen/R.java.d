@@ -1,0 +1,24 @@
+G:\Akademie\Code\DVCS\GameOfLife\android\gen\org\qtproject\example\GameOfLife\R.java \
+ : G:\Akademie\Code\DVCS\GameOfLife\android\res\layout\splash.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values\libs.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-de\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-el\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-es\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-et\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-fa\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-fr\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-id\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-it\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-ja\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-ms\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-nb\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-nl\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-pl\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-pt-rBR\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-ro\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-rs\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-ru\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-zh-rCN\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\res\values-zh-rTW\strings.xml \
+G:\Akademie\Code\DVCS\GameOfLife\android\bin\AndroidManifest.xml \

@@ -1,5 +1,18 @@
 #include "world.h"
 
+QVariantList World::toVariantList(const QList<Cell> &list)
+{
+    QVariantList newList;
+    foreach( const Cell &item, list )
+    {
+        QJsonObject jsonObject;
+        jsonObject.insert("X", item.X);
+        jsonObject.insert("Y", item.Y);
+        newList << QVariant(jsonObject);
+    }
+    return newList;
+}
+
 World::World()
 {
 }
@@ -27,6 +40,7 @@ void World::Evolve()
     HandleCellCreation();
     _cells = _evolvedCells;
     _evolvedCells.clear();
+    emit evolveComplete(toVariantList(_cells));
 }
 
 int World::_neighbourCount(Cell& cell)

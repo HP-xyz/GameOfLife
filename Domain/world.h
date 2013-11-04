@@ -4,10 +4,14 @@
 #include "cell.h"
 #include "domain_global.h"
 #include <QObject>
+#include <QVariantList>
+#include <QVariant>
+#include <QJsonObject>
 
 class DOMAINSHARED_EXPORT World : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QVariantList Cells READ GetCells NOTIFY evolveComplete)
 public:
     enum CELL_LIVE_STATE
     {
@@ -19,10 +23,15 @@ public:
     void AddCell(int x, int y);
     int NeighbourCount(int x, int y);
     void CreateCellIfPossible(int i, int j);
+    QVariantList toVariantList(const QList<Cell> &list);
+    QVariantList GetCells()
+    {
+        return toVariantList(_cells);
+    }
 public slots:
     void Evolve();
 signals:
-    void EvolveComplete();
+    void evolveComplete(QVariantList worldCells);
 private:
     int _xDimension;
     int _yDimension;
