@@ -13,6 +13,11 @@ QVariantList World::toVariantList(const QList<Cell> &list)
     return newList;
 }
 
+bool World::ContainsCellAt(int x, int y)
+{
+    return _cells.contains(Cell(x, y));
+}
+
 World::World()
 {
 }

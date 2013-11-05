@@ -11,9 +11,13 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     World world;
-    world.AddCell(5,5);
-    world.AddCell(4,5);
-    world.AddCell(3,5);
+    for (int i = 0; i < 500; i++)
+    {
+        int x = qrand() % ((2500 + 1) - 0) + 0;
+        int y = qrand() % ((2500 + 1) - 0) + 0;
+        if(!world.ContainsCellAt(x, y))
+            world.AddCell(x,y);
+    }
 
     QtQuick2ApplicationViewer viewer;
     viewer.rootContext()->setContextProperty("world", &world);

@@ -28,6 +28,7 @@ public:
     {
         return toVariantList(_cells);
     }
+    bool ContainsCellAt(int x, int y);
 public slots:
     void Evolve();
 signals:
